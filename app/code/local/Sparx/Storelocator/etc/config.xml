@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sparx_Storelocator>
+            <version>0.1.2</version>
+        </Sparx_Storelocator>
+    </modules>
+    <frontend>
+        <routers>
+            <storelocator>
+                <use>standard</use>
+                <args>
+                    <module>Sparx_Storelocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </storelocator>
+        </routers>
+        <layout>
+            <updates>
+                <storelocator>
+                    <file>storelocator.xml</file>
+                </storelocator>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <storelocator>
+                <class>Sparx_Storelocator_Helper</class>
+            </storelocator>
+        </helpers>
+        <blocks>
+            <storelocator>
+                <class>Sparx_Storelocator_Block</class>
+            </storelocator>
+        </blocks>
+        <models>
+            <storelocator>
+                <class>Sparx_Storelocator_Model</class>
+                <resourceModel>storelocator_mysql4</resourceModel>
+            </storelocator>
+            <storelocator_mysql4>
+                <class>Sparx_Storelocator_Model_Mysql4</class>
+                <entities>		  
+                    <storelocator>
+                        <table>storelocator</table>
+                    </storelocator>
+                </entities>
+            </storelocator_mysql4>
+        </models>
+        <resources>
+            <storelocator_setup>
+                <setup>
+                    <module>Sparx_Storelocator</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </storelocator_setup>
+            <storelocator_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </storelocator_write>
+            <storelocator_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </storelocator_read>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <storelocator>
+                <use>admin</use>
+                <args>
+                    <module>Sparx_Storelocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </storelocator>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <storelocator module="storelocator">
+                <title>Storelocator</title>
+                <sort_order>100</sort_order>
+                <children>
+		  <!--<storelocatorbackend module="storelocator">
+			<title>Store Locations</title>
+			<sort_order>0</sort_order>
+			<action>storelocator/adminhtml_storelocatorbackend</action>
+		  </storelocatorbackend>-->
+                    <storelocator module="storelocator">
+                        <title>Manage Storelocator</title>
+                        <sort_order>10</sort_order>
+                        <action>storelocator/adminhtml_storelocator</action>
+                    </storelocator>
+                </children>
+            </storelocator>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <storelocator translate="title" module="storelocator">
+                            <title>Storelocator</title>
+                            <sort_order>1000</sort_order>
+                            <children>
+                                <storelocatorbackend translate="title">
+                                    <title>Store Locations</title>
+                                </storelocatorbackend>
+                                <storelocator translate="title">
+                                    <title>Manage Storelocator</title>
+                                    <sort_order>10</sort_order>
+                                </storelocator>
+                            </children>
+                        </storelocator>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <storelocator>
+                    <file>storelocator.xml</file>
+                </storelocator>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    <default>
+        <storelocator>
+            <settings>
+                <defaultlon>78.0000</defaultlon>
+                <defaultlat>21.0000</defaultlat>
+		<active>1</active>
+                <toplinks>1</toplinks>
+            </settings>
+        </storelocator>
+    </default>
+    
+</config> 
